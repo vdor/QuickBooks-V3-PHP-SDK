@@ -293,6 +293,9 @@ class SyncRestHandler extends RestHandler
      * @param array $httpHeaders  The headers for the request
      */
     public function LogAPIRequestToLog($requestBody, $requestUri, $httpHeaders){
+      if (isset($httpHeaders['Authorization'])) {
+        $httpHeaders['Authorization'] = '[HIDDEN]';
+      }
       $this->RequestLogging->LogPlatformRequests($requestBody, $requestUri, $httpHeaders, true);
 
       if ($requestBody && $this->RequestCompressor) {
