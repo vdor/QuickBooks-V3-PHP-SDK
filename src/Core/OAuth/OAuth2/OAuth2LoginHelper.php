@@ -496,6 +496,10 @@ class OAuth2LoginHelper
         return;
       }
 
+      if (isset($httpHeaders['Authorization'])) {
+        $httpHeaders['Authorization'] = '[HIDDEN]';
+      }
+
       $this->RequestLogging->LogPlatformRequests($requestBody, $requestUri, $httpHeaders, true);
     }
 
