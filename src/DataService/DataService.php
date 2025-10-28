@@ -2009,7 +2009,7 @@ class DataService
     {
         if (isset($this->requestId) && $this->requestId !== '') {
             $delimiter = (strpos($uri, '?') === false) ? '?' : '&';
-            return $uri . $delimiter . 'requestid=' . urlencode($this->requestId);
+            $uri = $uri . $delimiter . 'requestid=' . urlencode($this->requestId);
         }
         $this->requestId = null;
         return $uri;
